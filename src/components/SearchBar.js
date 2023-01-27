@@ -9,7 +9,7 @@ const handleSubmit = (e)=>{
     setSearch(input)
 }
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={(e)=> props.handleSearch(e, setInput)}>
         <input type='text' placeholder='Search Term here' 
         onChange={(e)=>{setInput(e.target.value)}}/>
         <input type ='submit' />
