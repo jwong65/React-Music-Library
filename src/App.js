@@ -9,8 +9,11 @@ function App() {
  let [data, setData] = useState([])
  let [message, setMessage] = useState('')
 
+
+ //API isn't working so going to apply what the assignment is using
  
 useEffect(() => {
+  if(search){
   const fetchData = async () => {
       const response = await fetch(`https://itunes.apple.com/search?term=${search}`)
       // temporat literal `$results
@@ -19,19 +22,16 @@ useEffect(() => {
      if (resData.results.length >0){
       setData(resData.results)
      } else {
-      // setMessage('Not Found')
+      setMessage('Not Found')
      }
     }
   fetchData()
+}
 }, [search])
 
-const handleSearch = (e, term)=>{
-  e.preventDefault()
-  setSearch(term)
-}
  return (
  <>
-  <SearchBar handleSearch={handleSearch}/>
+  <SearchBar search= {search} setSearch={setSearch} />
   {message}
   <Gallery data={data}/>
  </>

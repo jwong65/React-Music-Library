@@ -1,14 +1,22 @@
 import React, {useState} from 'react'
 
 
-export default function SearchBar(props) {
+export default function SearchBar({search, setSearch}) {
 let [input, setInput] = useState('')
 // Destructured it to put it as props
 
+const handleSearch = (e)=>{
+  e.preventDefault()
+  setSearch(input)
+}
+
   return (
-    <form onSubmit={(e)=> props.handleSearch(e, input)}>
+    <form onSubmit={handleSearch}>
         <input type='text' placeholder='Search Term here' 
-        onChange={(e)=>{setInput(e.target.value)}}/>
+        onChange={(e)=>{setInput(e.target.value)
+          console.log(input)}
+
+        }/>
         <input type ='submit' />
     </form>
   )
