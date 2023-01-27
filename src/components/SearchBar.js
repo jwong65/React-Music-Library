@@ -13,10 +13,7 @@ const handleSearch = (e)=>{
   return (
     <form onSubmit={handleSearch}>
         <input type='text' placeholder='Search Term here' 
-        onChange={(e)=>{setInput(e.target.value)
-          console.log(input)}
-
-        }/>
+        onChange={(e)=>{setInput(e.target.value)}}/>
         <input type ='submit' />
     </form>
   )
