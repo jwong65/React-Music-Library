@@ -14,6 +14,7 @@ useEffect(() => {
   const fetchData = async () => {
       const response = await fetch(`https://itunes.apple.com/search?term=${search}`)
       // temporat literal `$results
+      // `https://itunes.apple.com/search?term=${searc
       const resData = await response.json()
      if (resData.results.length >0){
       setData(resData.results)
@@ -30,7 +31,7 @@ const handleSearch = (e, term)=>{
 }
  return (
  <>
-  <SearchBar search={search} handleSearch={handleSearch}/>
+  <SearchBar handleSearch={handleSearch}/>
   {message}
   <Gallery data={data}/>
  </>
