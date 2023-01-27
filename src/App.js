@@ -35,15 +35,15 @@ useEffect(() => {
 }, [search])
 
 
-  const handleSearch = (e, term)=>{
+  const handleInput = (e, term)=>{
     e.preventDefault()
     setSearch(term)
   }
  return (
  <>
   <SearchContext.Provider value = {{
-    term: searchInput,
-    handleSearch: handleSearch
+    input: searchInput,
+    handleInput: handleInput
   }}>
     <SearchBar/>
   </SearchContext.Provider>
