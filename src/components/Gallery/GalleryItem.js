@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 
+// Importing UUID package
+import { v4 as uuidv4 } from 'uuid'
 
 export default function GalleryItem({data}) {
 let [view, setView] =useState(false)
@@ -12,7 +14,7 @@ return (
         })} */}
         {/* Data is props destructed */}
         {data.map((item)=>(
-        <li>{item.trackCensoredName} by {item.artistName}</li>))}
+        <li key={uuidv4()}>{item.trackCensoredName} by {item.artistName}</li>))}
     </div>)
 
 }
