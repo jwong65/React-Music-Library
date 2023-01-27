@@ -1,15 +1,18 @@
 
 import './App.css';
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import SearchBar from './components/SearchBar';
 import Gallery from './components/Gallery/Gallery';
 
 import { DataContext } from './context/DataContext';
+import { SearchContext } from './context/SearchContext';
 
 function App() {
  let [search, setSearch] = useState('')
  let [data, setData] = useState([])
  let [message, setMessage] = useState('')
+
+ let searchInput = useRef('')
 
 
  //API isn't working so going to apply what the assignment is using
@@ -31,9 +34,20 @@ useEffect(() => {
 }
 }, [search])
 
+
+  const handleSearch = (e, term)=>{
+    e.preventDefault()
+    setSearch(term)
+  }
  return (
  <>
-  <SearchBar search= {search} setSearch={setSearch} />
+  <SearchContext.Provider value = {{
+    term: searchInput,
+    handleSearch: handleSearch
+  }}>
+    <SearchBar/>
+  </SearchContext.Provider>
+  {/* <SearchBar search= {search} setSearch={setSearch} /> */}
   {message}
   {/* <Gallery data={data}/> */}
   <DataContext.Provider value = {data}>
