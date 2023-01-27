@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import SearchBar from './components/SearchBar';
 import Gallery from './components/Gallery/Gallery';
 
+import { DataContext } from './context/DataContext';
+
 function App() {
  let [search, setSearch] = useState('')
  let [data, setData] = useState([])
@@ -33,7 +35,10 @@ useEffect(() => {
  <>
   <SearchBar search= {search} setSearch={setSearch} />
   {message}
-  <Gallery data={data}/>
+  {/* <Gallery data={data}/> */}
+  <DataContext.Provider value = {data}>
+    <Gallery />
+  </DataContext.Provider>
  </>
 )}
 
