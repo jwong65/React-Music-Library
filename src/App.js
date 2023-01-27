@@ -12,7 +12,7 @@ function App() {
  
 useEffect(() => {
   const fetchData = async () => {
-      const response = await fetch('https://itunes.apple.com/search?term=the%20grateful%20dead')
+      const response = await fetch(`https://itunes.apple.com/search?term=${search}`)
       // temporat literal `$results
       const resData = await response.json()
      if (resData.results.length >0){
