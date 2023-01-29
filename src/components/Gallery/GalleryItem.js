@@ -7,12 +7,15 @@ export default function GalleryItem(props) {
 let [view, setView] =useState(false)
 const multipleSearches ={
     'width': '30vw',
-    'border': '1em solid black'
+    'border': '1em solid black',
+    'text-align': 'center'
 
 }
 const detailedStyle ={
-    'width': '75vw',
-    'border': '1px solid black'
+    'width': '100vw',
+    'height': '25vh',
+    'border': '1px solid black',
+    'text-align': 'center'
 }
 const simpleView = () => {
     return (
