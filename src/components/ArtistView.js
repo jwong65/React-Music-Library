@@ -1,12 +1,12 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import { useParams } from 'react-router-dom'
 
 export default function ArtistView() {
     const [artistData, setArtistData] = useState([])
-    const id = useParams()
+    const {id} = useParams()
   return (
     <div>
-        <p>Artist passed was {id}</p>
+        <p>The Artist ID is {id}</p>
     </div>
   )
 }

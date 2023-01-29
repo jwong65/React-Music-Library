@@ -3,10 +3,10 @@ import { useParams } from 'react-router-dom'
 
 export default function AlbumView() {
     const [albumData, setAlbumData] = useState([])
-    // const id = useParams()
+    const {id} = useParams()
   return (
   <>
-    <p>Album was passed</p>
+    <p>The Album ID is {id}</p>
   </>
   )
 }
