@@ -49,29 +49,23 @@ useEffect(() => {
   }
  return (
  <>
-  <SearchContext.Provider value = {{
-    input: searchInput,
-    handleInput: handleInput
-  }}>
-    <SearchBar/>
-  </SearchContext.Provider>
-  {/* <SearchBar search= {search} setSearch={setSearch} /> */}
-  {message}
-  {/* <Gallery data={data}/> */}
-  <DataContext.Provider value = {data}>
-          <Gallery />
-  </DataContext.Provider>
-  
   <Router>
     <Routes>
       <Route path='/' element={
         <>
-          <SearchBar handleInput = {handleInput}/>
-          <Gallery data ={data}/>
+          <SearchContext.Provider value={{
+            input: searchInput,
+            handleInput: handleInput
+          }}>
+            <SearchBar></SearchBar>
+          </SearchContext.Provider>
+          <DataContext.Provider value={data}>
+            <Gallery/>
+          </DataContext.Provider>
+          
         </>
       } />
-        
-      <Route path ='album/:id' element={<AlbumView />}/>
+      <Route path ='/album/:id' element={<AlbumView />}/>
       <Route path ='/artist/:id' element={<ArtistView/>} />
     </Routes>
   </Router>

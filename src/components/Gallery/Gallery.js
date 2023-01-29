@@ -8,9 +8,18 @@ export default function Gallery() {
   //{data} instead of props refactored so Gallery doesn't take props 
   const data = useContext(DataContext)
 
+  const display = data.map((item, index)=>{
+    return(
+      <GalleryItem item={item} key ={index}/>
+    )
+  })
   return (
     <div>
-      <GalleryItem key={uuidv4()} data={data}/>
+      {display}
     </div>
+    // Commented out the uuid version as the assignment wants an id from the map
+    // <div>
+    //   <GalleryItem key={uuidv4()} data={data}/>
+    // </div>
   )
 }
