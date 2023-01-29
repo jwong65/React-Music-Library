@@ -7,6 +7,10 @@ import Gallery from './components/Gallery/Gallery';
 import { DataContext } from './context/DataContext';
 import { SearchContext } from './context/SearchContext';
 
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import AlbumView from './components/AlbumView';
+import ArtistView from './components/ArtistView';
+
 function App() {
  let [search, setSearch] = useState('')
  let [data, setData] = useState([])
@@ -55,8 +59,22 @@ useEffect(() => {
   {message}
   {/* <Gallery data={data}/> */}
   <DataContext.Provider value = {data}>
-    <Gallery />
+          <Gallery />
   </DataContext.Provider>
+  
+  <Router>
+    <Routes>
+      <Route path='/' element={
+        <>
+          <SearchBar handleInput = {handleInput}/>
+          <Gallery data ={data}/>
+        </>
+      } />
+        
+      <Route path ='album/:id' element={<AlbumView />}/>
+      <Route path ='/artist/:id' element={<ArtistView/>} />
+    </Routes>
+  </Router>
  </>
 )}
 
