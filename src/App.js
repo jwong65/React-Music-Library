@@ -19,8 +19,16 @@ function App() {
  
 useEffect(() => {
   if(search){
-  const fetchData = async () => {
-      const response = await fetch(`https://itunes.apple.com/search?term=${search}`)
+
+}
+}, [search])
+
+
+  const handleInput = (e, term)=>{
+    e.preventDefault()
+
+    const fetchData = async () => {
+      const response = await fetch(`https://itunes.apple.com/search?term=${term}`)
       // temporat literal `$results
       // `https://itunes.apple.com/search?term=${searc
       const resData = await response.json()
@@ -30,13 +38,9 @@ useEffect(() => {
       setMessage('Not Found')
      }
     }
-  fetchData()
-}
-}, [search])
+  
+    fetchData()
 
-
-  const handleInput = (e, term)=>{
-    e.preventDefault()
     setSearch(term)
   }
  return (
